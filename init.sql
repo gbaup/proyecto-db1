@@ -34,7 +34,9 @@ CREATE TABLE alumnos (
     ci INT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
-    fecha_nacimiento DATE NOT NULL
+    fecha_nacimiento DATE NOT NULL,
+    telefono VARCHAR(15),
+    mail VARCHAR(255)
 );
 
 CREATE TABLE clase (

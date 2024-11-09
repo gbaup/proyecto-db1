@@ -9,7 +9,6 @@ services:
       MYSQL_PASSWORD: admin
     ports:
       - "3306:3306"
-    #    command:
-    #      - --init-file /docker-entrypoint-initdb.d/init.sql
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init_data.sql:/docker-entrypoint-initdb.d/init_data.sql

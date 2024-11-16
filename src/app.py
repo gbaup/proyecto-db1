@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from src.controllers.login_controller import *
 from src.controllers.instructores_controller import *
+from src.controllers.turnos_controller import *
 
 
 def create_app():
@@ -10,5 +11,8 @@ def create_app():
 
     app.register_blueprint(login_bp, url_prefix='/api')
     app.register_blueprint(instructor_bp, url_prefix='/api')
+    app.register_blueprint(turnos_bp, url_prefix='/api')
+
+
 
     return app

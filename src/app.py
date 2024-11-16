@@ -4,6 +4,8 @@ from src.controllers.login_controller import *
 from src.controllers.instructores_controller import *
 from src.controllers.turnos_controller import *
 from src.controllers.alumnos_controller import *
+from src.controllers.actividades_controller import *
+from src.controllers.clases_controller import *
 
 
 def create_app():
@@ -14,5 +16,7 @@ def create_app():
     app.register_blueprint(instructor_bp, url_prefix='/api')
     app.register_blueprint(turnos_bp, url_prefix='/api')
     app.register_blueprint(alumnos_bp, url_prefix='/api')
+    app.register_blueprint(actividades_bp, url_prefix='/api')
+    app.register_blueprint(clases_bp, url_prefix='/api')
 
     return app

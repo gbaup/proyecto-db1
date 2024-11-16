@@ -1,6 +1,25 @@
 from src.config.db import get_db_connection
 
 
+def get_turnos():
+    connection = get_db_connection()
+    if connection is None:
+        return {"error": "No se pudo conectar a la base de datos"}
+
+    try:
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM turnos")
+        turnos = cursor.fetchall()
+
+    except Exception as e:
+        return {"error": f"Error al obtener los turnos: {e}"}
+    finally:
+        cursor.close()
+        connection.close()
+
+    return turnos
+
+
 def create_turno(hora_inicio, hora_fin):
     connection = get_db_connection()
     if connection is None:

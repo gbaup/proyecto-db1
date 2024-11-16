@@ -4,6 +4,26 @@ from src.services.turnos_service import *
 turnos_bp = Blueprint('turnos_bp', __name__)
 
 
+@turnos_bp.route('/turnos', methods=['GET'])
+def getAll_turnos():
+    result = get_turnos()
+    print(result)
+
+    if 'error' in result:
+        return jsonify(result), 500
+
+    turnos = [
+        {
+            "id": turno[0],
+            "hora_inicio": str(turno[1]),
+            "hora_fin": str(turno[2])
+        }
+        for turno in result
+    ]
+
+    return jsonify(turnos), 200
+
+
 @turnos_bp.route('/turnos', methods=['POST'])
 def add_turno():
     data = request.get_json()

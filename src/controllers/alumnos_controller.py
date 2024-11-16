@@ -4,6 +4,7 @@ from src.services.alumnos_service import *
 alumnos_bp = Blueprint('alumnos_bp', __name__)
 
 
+@alumnos_bp.route('/alumnos', methods=['POST'])
 def add_alumno():
     data = request.get_json()
     ci = data.get('ci')
@@ -15,7 +16,7 @@ def add_alumno():
 
     if not ci or not nombre or not apellido or not fecha_nacimiento or not mail or not telefono:
         return jsonify({
-                           "error": "Faltan campos obligatorios: 'ci', 'nombre', 'apellido', 'fecha_nacimiento', 'mail', 'telefono"}), 400
+            "error": "Faltan campos obligatorios: 'ci', 'nombre', 'apellido', 'fecha_nacimiento', 'mail', 'telefono"}), 400
 
     result = create_alumno(ci, nombre, apellido, fecha_nacimiento, mail, telefono)
 
@@ -25,6 +26,7 @@ def add_alumno():
     return jsonify(result), 201
 
 
+@alumnos_bp.route('/alumnos', methods=['PUT'])
 def modify_alumno():
     data = request.get_json()
     ci = data.get('ci')
@@ -45,6 +47,7 @@ def modify_alumno():
     return jsonify(result), 200
 
 
+@alumnos_bp.route('/alumnos', methods=['DELETE'])
 def remove_alumno():
     data = request.get_json()
     ci = data.get('ci')

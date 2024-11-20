@@ -3,6 +3,7 @@ from src.services.actividades_service import *
 
 actividades_bp = Blueprint('actividades_bp', __name__)
 
+
 @actividades_bp.route('/actividades', methods=['GET'])
 def getAll_actividades():
     result = get_actividades()
@@ -13,10 +14,9 @@ def getAll_actividades():
     return jsonify(result), 200
 
 
-@actividades_bp.route('/actividades', methods=['PUT'])
-def modify_actividad():
+@actividades_bp.route('/actividades/<int:id>', methods=['PUT'])
+def modify_actividad(id):
     data = request.get_json()
-    id = data.get('id')
     descripcion = data.get('descripcion')
     costo = data.get('costo')
 

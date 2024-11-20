@@ -41,10 +41,9 @@ def add_turno():
     return jsonify(result), 201
 
 
-@turnos_bp.route('/turnos', methods=['PUT'])
-def modify_turno():
+@turnos_bp.route('/turnos/<int:id>', methods=['PUT'])
+def modify_turno(id):
     data = request.get_json()
-    id = data.get('id')
     hora_inicio = data.get('hora_inicio')
     hora_fin = data.get('hora_fin')
 

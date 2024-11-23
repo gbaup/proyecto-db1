@@ -5,7 +5,7 @@ metricas_bp = Blueprint('metricas_bp', __name__)
 
 
 @metricas_bp.route('/metricas/clasemasconcurrida', methods=['GET'])
-def get_clase_mas_concurrida():
+def clase_mas_concurrida():
     result = get_clase_mas_concurrida()
 
     if 'error' in result:
@@ -15,7 +15,7 @@ def get_clase_mas_concurrida():
 
 
 @metricas_bp.route('/metricas/clasemasrentable', methods=['GET'])
-def get_clase_mas_rentable():
+def clase_mas_rentable():
     result = get_clase_mas_rentable()
 
     if 'error' in result:
@@ -25,7 +25,7 @@ def get_clase_mas_rentable():
 
 
 @metricas_bp.route('/metricas/turnomaspopular', methods=['GET'])
-def get_turno_mas_popular():
+def turno_mas_popular():
     result = get_turno_mas_popular()
 
     if 'error' in result:

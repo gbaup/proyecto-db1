@@ -1,6 +1,5 @@
 from src.config.db import get_db_connection
 from datetime import datetime
-
 from src.utils.utils import validar_cedula
 
 

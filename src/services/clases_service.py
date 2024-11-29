@@ -60,26 +60,6 @@ def edit_clase(id, ci_instructor, id_turno):
     return {"message": "Clase modificada exitosamente"}
 
 
-# def add_alumno_a_clase(ci_alumno, id_clase, id_equipo):
-#     connection = get_db_connection()
-#     if connection is None:
-#         return {"error": "No se pudo conectar a la base de datos"}
-#
-#     try:
-#         cursor = connection.cursor()
-#
-#         cursor.execute(
-#             "INSERT INTO alumno_clase (id_clase, ci_alumno, id_equipo) VALUES (%s, %s, %s)",
-#             (id_clase, ci_alumno, id_equipo))
-#         connection.commit()
-#
-#     except Exception as e:
-#         return {"error": f"Error al agregar el alumno: {e}"}
-#     finally:
-#         cursor.close()
-#         connection.close()
-#
-#     return {"message": "Alumno agregado exitosamente"}
 def add_alumno_a_clase(ci_alumno, id_clase, id_equipo):
     connection = get_db_connection()
     if connection is None:

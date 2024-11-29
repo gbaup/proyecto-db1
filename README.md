@@ -70,10 +70,18 @@ Asegúrate de tener instalado lo siguiente antes de comenzar:
 ## Endpoints
 
 El proyecto corre por defecto en el puerto 5000 (configurable), siendo la url base del proyecto:
+
 ```bash
 http://localhost:5000/api
 ```
+
 A continuación, se listan los endpoints disponibles:
+
+### Login
+
+Se puede utilizar este endpoint a modo de corroborar que la aplicación está funcionando correctamente.
+
+- GET /login
 
 ### Actividades
 

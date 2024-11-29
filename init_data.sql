@@ -19,3 +19,7 @@ INSERT INTO equipamiento (id_actividad, descripcion, costo) VALUES (2, 'Botas de
 INSERT INTO equipamiento (id_actividad, descripcion, costo) VALUES (2, 'Gafas de ski', 20.00);
 INSERT INTO equipamiento (id_actividad, descripcion, costo) VALUES (3, 'Casco para moto de nieve', 20.00);
 INSERT INTO equipamiento (id_actividad, descripcion, costo) VALUES (3, 'Guantes para moto de nieve', 12.00);
+
+
+-- Insertar login a modo ejemplo
+INSERT INTO login (correo, contrasena) VALUES ('prueba@prueba.com', 'prueba');

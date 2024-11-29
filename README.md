@@ -42,7 +42,14 @@ Asegúrate de tener instalado lo siguiente antes de comenzar:
 
 1. Navegar hasta el directorio raíz del proyecto.
 
-2. Inicializar el entorno virtual (si no lo has hecho anteriormente):
+2. Inicializar docker-compose: se va a crear una base de datos MySQL con datos básicos/iniciales. Estos datos se pueden
+   ver y modificar en los archivos 'init.sql' y 'init_data.sql'.
+
+    ```bash
+    docker-compose up -d
+    ```
+
+3. Inicializar el entorno virtual (si no lo has hecho anteriormente):
 
 - Mac/Linux:
    ```bash
@@ -54,7 +61,7 @@ Asegúrate de tener instalado lo siguiente antes de comenzar:
     .\venv\Scripts\activate
     ```
 
-3. Ejecutar el siguiente comando para iniciar la aplicación:
+4. Ejecutar el siguiente comando para iniciar la aplicación:
 
     ```bash
     python main.py
@@ -114,11 +121,11 @@ El proyecto corre por defecto en el puerto 5000 (configurable). A continuación,
 ### Métricas
 
 - GET /metricas/clasemasconcurrida
-  - Obtiene la clase más concurrida.
+    - Obtiene la clase más concurrida.
 - GET /metricas/clasemasrentable
-  - Obtiene la clase más rentable.
+    - Obtiene la clase más rentable.
 - GET /metricas/turnomaspopular
-  - Obtiene el turno más popular.
+    - Obtiene el turno más popular.
 
 
 

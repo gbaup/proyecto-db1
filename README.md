@@ -1,4 +1,4 @@
-# Proyecto Python
+# Proyecto Base de Datos
 
 Este proyecto utiliza una estructura basada en `create_app()` para inicializar y ejecutar la aplicación. A continuación,
 se explican los pasos para ejecutar el proyecto en diferentes sistemas operativos.
@@ -69,7 +69,11 @@ Asegúrate de tener instalado lo siguiente antes de comenzar:
 
 ## Endpoints
 
-El proyecto corre por defecto en el puerto 5000 (configurable). A continuación, se listan los endpoints disponibles:
+El proyecto corre por defecto en el puerto 5000 (configurable), siendo la url base del proyecto:
+```bash
+http://localhost:5000/api
+```
+A continuación, se listan los endpoints disponibles:
 
 ### Actividades
 

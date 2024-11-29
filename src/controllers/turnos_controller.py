@@ -58,11 +58,8 @@ def modify_turno(id):
     return jsonify(result), 200
 
 
-@turnos_bp.route('/instructor', methods=['DELETE'])
-def remove_turno():
-    data = request.get_json()
-    id = data.get('id')
-
+@turnos_bp.route('/instructor/<int:id>', methods=['DELETE'])
+def remove_turno(id):
     if not id:
         return jsonify({"error": "Falta el d id el turno"}), 400
 

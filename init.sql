@@ -47,8 +47,10 @@ CREATE TABLE clase (
     dictada BOOLEAN NOT NULL,
     FOREIGN KEY (ci_instructor) REFERENCES instructores(ci),
     FOREIGN KEY (id_actividad) REFERENCES actividades(id),
-    FOREIGN KEY (id_turno) REFERENCES turnos(id)
+    FOREIGN KEY (id_turno) REFERENCES turnos(id),
+    CONSTRAINT unique_instructor_turno UNIQUE (ci_instructor, id_turno)
 );
+
 
 CREATE TABLE alumno_clase (
     id_clase INT,

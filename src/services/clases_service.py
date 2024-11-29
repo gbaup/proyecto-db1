@@ -60,6 +60,26 @@ def edit_clase(id, ci_instructor, id_turno):
     return {"message": "Clase modificada exitosamente"}
 
 
+# def add_alumno_a_clase(ci_alumno, id_clase, id_equipo):
+#     connection = get_db_connection()
+#     if connection is None:
+#         return {"error": "No se pudo conectar a la base de datos"}
+#
+#     try:
+#         cursor = connection.cursor()
+#
+#         cursor.execute(
+#             "INSERT INTO alumno_clase (id_clase, ci_alumno, id_equipo) VALUES (%s, %s, %s)",
+#             (id_clase, ci_alumno, id_equipo))
+#         connection.commit()
+#
+#     except Exception as e:
+#         return {"error": f"Error al agregar el alumno: {e}"}
+#     finally:
+#         cursor.close()
+#         connection.close()
+#
+#     return {"message": "Alumno agregado exitosamente"}
 def add_alumno_a_clase(ci_alumno, id_clase, id_equipo):
     connection = get_db_connection()
     if connection is None:
@@ -67,17 +87,38 @@ def add_alumno_a_clase(ci_alumno, id_clase, id_equipo):
 
     try:
         cursor = connection.cursor()
+        cursor.execute(
+            """
+            SELECT 
+                (SELECT id_turno FROM clase WHERE id = %s) AS turno_clase,
+                EXISTS(
+                    SELECT 1 
+                    FROM alumno_clase ac
+                    JOIN clase c ON ac.id_clase = c.id
+                    WHERE ac.ci_alumno = %s AND c.id_turno = (SELECT id_turno FROM clase WHERE id = %s)
+                ) AS conflicto
+            """,
+            (id_clase, ci_alumno, id_clase)
+        )
+        result = cursor.fetchone()
+        turno_clase, conflicto = result
+
+        if conflicto:
+            return {"error": "El alumno ya está inscrito en una clase con este turno"}
 
         cursor.execute(
             "INSERT INTO alumno_clase (id_clase, ci_alumno, id_equipo) VALUES (%s, %s, %s)",
-            (id_clase, ci_alumno, id_equipo))
+            (id_clase, ci_alumno, id_equipo)
+        )
         connection.commit()
 
     except Exception as e:
         return {"error": f"Error al agregar el alumno: {e}"}
     finally:
-        cursor.close()
-        connection.close()
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()
 
     return {"message": "Alumno agregado exitosamente"}
 

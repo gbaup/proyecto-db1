@@ -40,11 +40,8 @@ def modify_instructor():
     return jsonify(result), 200
 
 
-@instructor_bp.route('/instructor', methods=['DELETE'])
-def remove_instructor():
-    data = request.get_json()
-    ci = data.get('ci')
-
+@instructor_bp.route('/instructor/<int:id>', methods=['DELETE'])
+def remove_instructor(ci):
     if not ci:
         return jsonify({"error": "Falta la ci del instructor"}), 400
 

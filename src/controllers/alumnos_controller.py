@@ -26,10 +26,9 @@ def add_alumno():
     return jsonify(result), 201
 
 
-@alumnos_bp.route('/alumnos', methods=['PUT'])
-def modify_alumno():
+@alumnos_bp.route('/alumnos/<int:ci>', methods=['PUT'])
+def modify_alumno(ci):
     data = request.get_json()
-    ci = data.get('ci')
     nombre = data.get('nombre')
     apellido = data.get('apellido')
     fecha_nacimiento = data.get('fecha_nacimiento')
@@ -47,11 +46,8 @@ def modify_alumno():
     return jsonify(result), 200
 
 
-@alumnos_bp.route('/alumnos', methods=['DELETE'])
-def remove_alumno():
-    data = request.get_json()
-    ci = data.get('ci')
-
+@alumnos_bp.route('/alumnos/<int:ci>', methods=['DELETE'])
+def remove_alumno(ci):
     if not ci:
         return jsonify({"error": "Falta la ci del alumno"}), 400
 
